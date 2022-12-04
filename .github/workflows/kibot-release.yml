@@ -1,0 +1,32 @@
+name: Kibot Docs
+
+on:
+  workflow_call:
+    inputs:
+      config-file:
+        required: true
+        type: string
+      board-file:
+        required: true
+        type: string
+
+jobs:
+  release:
+    name: "Release"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build
+        uses: INTI-CMNB/KiBot@v2_k6
+        with:
+          dir: build
+          config: ${{ inputs.config-file }}
+          board: ${{ inputs.board-file }}
+          skip: all
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/*
