@@ -24,7 +24,7 @@ jobs:
           dir: github-pages
           config: ${{ inputs.config-file }}
           board: ${{ inputs.board-file }}
-          skip: all
+          skip: run_erc,run_drc
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
