@@ -9,6 +9,13 @@ on:
       board-file:
         required: true
         type: string
+    outputs:
+      release_created:
+        description: "Whether a release was created"
+        value: ${{ jobs.release-please.release_created }}
+      tag_name:
+        description: "Tag name of the created release"
+        value: ${{ jobs.release-please.tag_name }}
 
 jobs:
   release-please:
