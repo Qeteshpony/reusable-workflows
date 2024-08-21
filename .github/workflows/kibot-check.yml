@@ -34,7 +34,6 @@ jobs:
 
   DRC:
     runs-on: ubuntu-latest
-    needs: ERC
 
     steps:
       - uses: actions/checkout@v4
