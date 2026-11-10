@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Run ERC
         uses: INTI-CMNB/KiBot@v2_k10
@@ -27,16 +27,18 @@ jobs:
           targets: __NONE__
 
       - name: Retrieve results
-        uses: actions/upload-artifact@v4
+        if: always()
+        uses: actions/upload-artifact@v7
         with:
           name: ERC_Output
           path: Generated
+          if-no-files-found: ignore
 
   DRC:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Run DRC
         uses: INTI-CMNB/KiBot@v2_k10
@@ -48,7 +50,9 @@ jobs:
           targets: __NONE__
 
       - name: Retrieve results
-        uses: actions/upload-artifact@v4
+        if: always()
+        uses: actions/upload-artifact@v7
         with:
           name: DRC_Output
           path: Generated
+          if-no-files-found: ignore
